@@ -2,4 +2,4 @@ Fiorano Microservice framework provides SDKs (presently in Java, C#, C and C++) 
 
 The framework also provides samples which demonstrate general usage patterns. Some of the commonly used microservices int the enterpise version are also open for reference for developers looking to build their own services.
 
-Refer [GutHub Fiorano Microservice Framework Wiki] (https://github.com/FioranoSoftware/Fiorano-Microservice-Framework/wiki) for more
+Refer to the https://www.fiorano.com/opensource/knowledge-base page for Open Source documentation; send mail to opensource@fiorano.com to know more.
