@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<service guid="DistributionService" version="4.0">
+    <display categories="Flow" name="DistributionService"/>
+    <icon large="DistributionService32.png" small="DistributionServiceicon.png"/>
+    <creation authors="Fiorano Software Technologies Pvt. Ltd."
+              date="25-03-2006 12:00:00" last-modified="05-07-2006 04:19:10"/>
+    <short-description>This service is used for distributing workload of 'N Jobs' amongst 'M Workflow processors'.
+    </short-description>
+    <long-description>This service is used for distributing workload of 'N Jobs' amongst 'M Workflow processors'.
+    </long-description>
+    <deployment label="PRODUCTION">
+        <resources>
+            <resource name="fesb-comp-DistributionService.jar"/>
+        </resources>
+        <servicerefs>
+            <serviceref guid="EDBCEngine" version="4.0"/>
+        </servicerefs>
+    </deployment>
+    <execution>
+        <ccp min-version-supported="1.0" max-version-supported="1.0"/>
+        <launchtype supported="7"/>
+        <separate-process executable="com.fiorano.services.distributionservice.DistributionServiceLauncher"/>
+        <inmemory executable="com.fiorano.services.distributionservice.DistributionServiceLauncher"/>
+        <cps inmemory-launchable="false">
+            <launcher>com.fiorano.services.distributionservice.cps.swing.DistributionServicePropertySheet</launcher>
+        </cps>
+        <input-ports>
+            <port name="IN_PORT">
+                <description>Accepts and Distributes messages to the output Event Ports depending upon the weights
+                    associated with them.
+                </description>
+            </port>
+        </input-ports>
+        <logmodules>
+            <logmodule name="com.fiorano.services.distributionservice.DistributionService" level="WARNING"/>
+            <logmodule name="com.fiorano.services.distributionservice.transport.jms" level="WARNING"/>
+            <logmodule name="com.fiorano.services.distributionservice.engine" level="WARNING"/>
+        </logmodules>
+        <runtime-arguments>
+            <runtime-argument mandatory="false" name="IN_PORT_SESSIONS">
+                <value>1</value>
+            </runtime-argument>
+            <runtime-argument inmemory="false" mandatory="false" name="JVM_PARAMS">
+                <value>-DLOG_TO_STREAM=true</value>
+            </runtime-argument>
+        </runtime-arguments>
+    </execution>
+</service>

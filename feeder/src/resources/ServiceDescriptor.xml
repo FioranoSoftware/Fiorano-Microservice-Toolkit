@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<service guid="Feeder" version="4.0">
+     <display categories="Util" name="Feeder"/>
+     <icon large="feeder32.png" small="feeder.png"/>
+     <creation authors="Fiorano Software Technologies Pvt. Ltd." date="27-12-2001 12:00:00" last-modified="25-02-2011 14:29:23"/>
+     <short-description>The Feeder service is used to feed in data.</short-description>
+     <long-description>The Feeder service is used to feed data to any service to which its output port is linked. The service defines no input or output format for the messages. It can take any data as input and just sends it forward. The user can input data in the window which pops up on launching the service.</long-description>
+     <deployment label="PRODUCTION">
+          <resources>
+               <resource name="fesb-comp-feeder.jar"/>
+               <resource name="sample.gif"/>
+          </resources>
+          <servicerefs>
+               <serviceref guid="esbCustomEditors" version="4.0"/>
+               <serviceref guid="jh" version="4.0"/>
+               <serviceref guid="EDBCEngine" version="4.0"/>
+          </servicerefs>
+     </deployment>
+     <execution transaction="false">
+          <ccp max-version-supported="1.0" min-version-supported="1.0"/>
+          <launchtype supported="5"/>
+          <separate-process executable="com.com.fiorano.services.feeder.FeederServiceLauncher"/>
+          <inmemory executable="com.com.fiorano.services.feeder.FeederServiceLauncher"/>
+          <cps inmemory-launchable="false" mandatory="false">
+               <launcher>com.com.fiorano.services.feeder.cps.swing.FeederPropertySheet</launcher>
+          </cps>
+          <output-ports>
+               <port name="OUT_PORT">
+                    <description>Gives data or messages as output</description>
+               </port>
+          </output-ports>
+          <logmodules>
+               <logmodule level="WARNING" name="com.com.fiorano.services.feeder.FeederService"/>
+               <logmodule level="WARNING" name="com.fiorano.services.feeder.transport.jms"/>
+               <logmodule level="WARNING" name="com.fiorano.services.feeder.engine"/>
+               <logmodule name="ERR_HANDLER"/>
+               <logmodule level="INFO" name="OUT_HANDLER"/>
+          </logmodules>
+          <runtime-arguments>
+               <runtime-argument inmemory="false" mandatory="false" name="JVM_PARAMS">
+                    <value>-DLOG_TO_STREAM=true</value>
+               </runtime-argument>
+          </runtime-arguments>
+     </execution>
+</service>

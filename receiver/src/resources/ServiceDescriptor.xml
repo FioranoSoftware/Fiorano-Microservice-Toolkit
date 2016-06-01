@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<service guid="Receiver" version="4.0">
+  <display categories="Performance" name="Receiver"/>
+  <icon large="receiver32.png" small="receiver.png"/>
+  <creation authors="Fiorano Software Technologies Pvt. Ltd."
+    date="13-01-2005 12:00:00" last-modified="14-01-2005 08:45:05"/>
+  <short-description>Simple JMS Receive component created for Performance evaluation.</short-description>
+  <long-description>Simple JMS Receive component created for Performance evaluation.This Receive component can be customized by changing runtime arguements. totalMessageCount : Total Number of messages to be received. isTransacted : Whether the session created is transacted. transactionSize : if transacted, no. of messages in one transaction. selector : Selector to be used for message receiver. numConnections : Number of connections to be created. numSessions : Total Number of session created. numProducers : Total number of message producers created. sleeptime : Sleep induced in Consumer for successive receive. JVM_PARAMS : Parameters for launching JVM.</long-description>
+  <deployment label="PRODUCTION">
+    <resources>
+      <resource name="fesb-comp-Receiver.jar"/>
+    </resources>
+    <servicerefs>
+      <serviceref guid="jms" version="4.0"/>
+      <serviceref guid="TifosiJavaRTL" version="4.0"/>
+      <serviceref guid="BCCommon" version="4.0"/>
+      <serviceref guid="ServicesESB" version="4.0"/>
+      <serviceref guid="MicroServiceCommon" version="4.0"/>
+    </servicerefs>
+  </deployment>
+  <execution>
+    <launchtype supported="5"/>
+    <separate-process executable="com.fiorano.runtime.receiver.service.ReceiverService"/>
+    <input-ports>
+      <port name="IN_PORT">
+        <description>Receives messages asynchronously</description>
+      </port>
+    </input-ports>
+    <logmodules>
+      <logmodule level="INFO" name="com.fiorano.edbc.receiver"/>
+      <logmodule name="ERR_HANDLER"/>
+      <logmodule level="INFO" name="OUT_HANDLER"/>
+    </logmodules>
+    <runtime-arguments>
+      <runtime-argument name="totalMessageCount" type="java.lang.Integer">
+        <value>10000</value>
+      </runtime-argument>
+      <runtime-argument name="isTransacted" type="java.lang.Boolean">
+        <value>true</value>
+      </runtime-argument>
+      <runtime-argument name="transactionSize" type="java.lang.Integer">
+        <value>1</value>
+      </runtime-argument>
+      <runtime-argument mandatory="false" name="selector"/>
+      <runtime-argument name="numConnections" type="java.lang.Integer">
+        <value>1</value>
+      </runtime-argument>
+      <runtime-argument name="numSessions" type="java.lang.Integer">
+        <value>1</value>
+      </runtime-argument>
+      <runtime-argument name="numConsumers" type="java.lang.Integer">
+        <value>1</value>
+      </runtime-argument>
+      <runtime-argument name="sleeptime" type="java.lang.Integer">
+        <value>1000</value>
+      </runtime-argument>
+      <runtime-argument inmemory="false" mandatory="false" name="JVM_PARAMS">
+        <value>-DLOG_TO_STREAM=true</value>
+      </runtime-argument>
+    </runtime-arguments>
+  </execution>
+</service>

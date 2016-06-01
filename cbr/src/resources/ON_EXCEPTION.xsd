@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.fiorano.com/fesb/activity/fault">
+    <xsd:element name="Error">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="errorCode" type="xsd:string"/>
+                <xsd:element name="errorMessage" type="xsd:string"/>
+                <xsd:element name="errorDetail" type="xsd:string" minOccurs="0"/>
+                <xsd:element name="data" minOccurs="0">
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            <xsd:any namespace="##any" minOccurs="0" maxOccurs="unbounded" processContents="lax"/>
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+</xsd:schema>

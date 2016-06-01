@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<service guid="EDBCEngine" version="4.0">
+    <display categories="System Lib" name="EDBCEngine"/>
+    <creation authors="Fiorano Software Technologies Pvt. Ltd." date="30-03-2007 12:00:00"
+              last-modified="25-02-2011 14:29:23"/>
+    <short-description>EDBCEngine contains classes from EDBC framework and wrappers over ESB API</short-description>
+    <long-description>EDBCEngine contains classes from EDBC framework and wrappers over ESB API</long-description>
+    <deployment label="PRODUCTION">
+        <resources>
+            <resource name="EDBCEngine.jar"/>
+        </resources>
+        <servicerefs>
+            <serviceref guid="JMSLib" version="4.0"/>
+            <serviceref guid="Studio" version="4.0"/>
+            <serviceref guid="TifosiUIFramework" version="4.0"/>
+            <serviceref guid="ServicesESB" version="4.0"/>
+            <serviceref guid="ServicesCommon" version="4.0"/>
+            <serviceref guid="MicroServiceCommon" version="4.0"/>
+            <serviceref guid="commonspool" version="4.0"/>
+        </servicerefs>
+    </deployment>
+</service>

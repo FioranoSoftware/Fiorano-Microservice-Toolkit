@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<service guid="CBR" version="4.0">
+    <display categories="Flow" name="CBR"/>
+    <icon large="cbr32.png" small="cbr.png"/>
+    <creation authors="Fiorano Software Technologies Pvt. Ltd." date="27-12-2001 12:00:00"
+              last-modified="25-02-2011 14:29:23"/>
+    <short-description>The CBR service filters data based on the an XPATH selection criteria.</short-description>
+    <long-description>The CBR service allows data filtering based on the given XPATH selection criteria. This service
+        accepts XML data on the input channel, performs XPATH selection and writes data to the appropriate output port.
+    </long-description>
+    <deployment label="PRODUCTION">
+        <resources>
+            <resource name="fesb-comp-CBR.jar"/>
+        </resources>
+        <servicerefs>
+            <serviceref guid="EDBCEngine" version="4.0"/>
+            <serviceref guid="esbCustomEditors" version="4.0"/>
+            <serviceref guid="jh" version="4.0"/>
+            <serviceref guid="mgraph" version="4.0"/>
+        </servicerefs>
+    </deployment>
+    <execution transaction="false">
+        <ccp max-version-supported="1.0" min-version-supported="1.0"/>
+        <launchtype supported="7"/>
+        <separate-process executable="com.fiorano.services.cbr.CBRServiceLauncher"/>
+        <inmemory executable="com.fiorano.services.cbr.CBRServiceLauncher"/>
+        <cps inmemory-launchable="false">
+            <launcher>com.fiorano.services.cbr.cps.swing.CBRPropertySheet</launcher>
+        </cps>
+        <input-ports>
+            <port name="IN_PORT">
+                <description>Accepts the incoming messages of XML format</description>
+            </port>
+        </input-ports>
+        <output-ports>
+            <port name="ON_EXCEPTION">
+                <description>Default Error port added by Business Service Creation Wizard.</description>
+                <schema root="{http://www.fiorano.com/fesb/activity/fault}Error">
+                    <file>ON_EXCEPTION.xsd</file>
+                </schema>
+            </port>
+        </output-ports>
+        <logmodules>
+            <logmodule level="WARNING" name="com.fiorano.services.cbr.CBRService"/>
+            <logmodule level="WARNING" name="com.fiorano.services.cbr.transport.jms"/>
+            <logmodule name="ERR_HANDLER"/>
+            <logmodule level="INFO" name="OUT_HANDLER"/>
+        </logmodules>
+        <runtime-arguments>
+            <runtime-argument mandatory="false" name="useFioranoCBR" type="java.lang.Boolean">
+                <value>false</value>
+            </runtime-argument>
+            <runtime-argument inmemory="false" mandatory="false" name="JVM_PARAMS">
+                <value>-DLOG_TO_STREAM=true</value>
+            </runtime-argument>
+        </runtime-arguments>
+    </execution>
+</service>

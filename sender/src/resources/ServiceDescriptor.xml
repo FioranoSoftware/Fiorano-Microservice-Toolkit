@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<service guid="Sender" version="4.0">
+  <display categories="Performance" name="Sender"/>
+  <icon large="sender32.png" small="sender.png"/>
+  <creation authors="Fiorano Software Technologies Pvt. Ltd."
+    date="13-01-2005 12:00:00" last-modified="14-01-2005 08:45:05"/>
+  <short-description>Simple JMS Send component created for Performance evaluation.</short-description>
+  <long-description>Simple JMS Send component created for Performance evaluation. This send component can be customized by changing runtime arguements. totalMessageCount : Total Number of messages to be sent. isTransacted : Whether the session created is transacted. transactionSize : if transacted, no. of messages in one transaction. msgSize : Message Payload in bytes, will be used in case XML file is not provided. xmlFilePath : Location of XML file that will be used by Sender. numConnections : Number of connections to be created. numSessions : Total Number of session created. numProducers : Total number of message producers created. JVM_PARAMS : Parameters for launching JVM.</long-description>
+  <deployment label="PRODUCTION">
+    <resources>
+      <resource name="fesb-comp-Sender.jar"/>
+    </resources>
+    <servicerefs>
+      <serviceref guid="jms" version="4.0"/>
+      <serviceref guid="MicroServiceCommon" version="4.0"/>
+      <serviceref guid="ServicesESB" version="4.0"/>
+    </servicerefs>
+  </deployment>
+  <execution>
+    <launchtype supported="5"/>
+    <separate-process executable="com.fiorano.runtime.sender.service.SenderService"/>
+    <output-ports>
+      <port name="OUT_PORT">
+        <description>Sends specified message in the format defined</description>
+      </port>
+    </output-ports>
+    <logmodules>
+      <logmodule level="INFO" name="com.fiorano.edbc.sender"/>
+      <logmodule name="ERR_HANDLER"/>
+      <logmodule level="INFO" name="OUT_HANDLER"/>
+    </logmodules>
+    <runtime-arguments>
+      <runtime-argument name="totalMessageCount" type="java.lang.Integer">
+        <value>10000</value>
+      </runtime-argument>
+      <runtime-argument name="isTransacted" type="java.lang.Boolean">
+        <value>true</value>
+      </runtime-argument>
+      <runtime-argument name="transactionSize" type="java.lang.Integer">
+        <value>1</value>
+      </runtime-argument>
+      <runtime-argument name="msgSize" type="java.lang.Integer">
+        <value>1024</value>
+      </runtime-argument>
+      <runtime-argument mandatory="false" name="xmlFilePath"/>
+      <runtime-argument name="numConnections" type="java.lang.Integer">
+        <value>1</value>
+      </runtime-argument>
+      <runtime-argument name="numSessions" type="java.lang.Integer">
+        <value>1</value>
+      </runtime-argument>
+      <runtime-argument name="numProducers" type="java.lang.Integer">
+        <value>1</value>
+      </runtime-argument>
+      <runtime-argument inmemory="false" mandatory="false" name="JVM_PARAMS">
+        <value>-DLOG_TO_STREAM=true</value>
+      </runtime-argument>
+    </runtime-arguments>
+  </execution>
+</service>

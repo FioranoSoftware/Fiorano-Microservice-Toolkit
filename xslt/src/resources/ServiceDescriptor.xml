@@ -1,0 +1,53 @@
+<service guid="Xslt" version="4.0">
+    <display name="Xslt" categories="Transformation"/>
+    <icon small="xslt.png" large="xslt32.png"/>
+    <creation date="31-03-2009 01:39:15" last-modified="31-03-2009 01:28:56"
+              authors="Fiorano Software Technologies Pvt. Ltd."/>
+    <short-description>Transforms input XML based on Mappings defined and generates an output XML</short-description>
+    <long-description>Transforms input XML based on Mappings defined and generates an output XML</long-description>
+    <deployment label="Development">
+        <resources>
+            <resource name="fesb-comp-Xslt.jar"/>
+        </resources>
+        <servicerefs>
+            <serviceref guid="base64" version="4.0"/>
+            <serviceref guid="saxon" version="4.0"/>
+            <serviceref guid="bsf" version="4.0"/>
+            <serviceref guid="eagle" version="4.0"/>
+            <serviceref guid="EDBCEngine" version="4.0"/>
+            <serviceref guid="js" version="4.0"/>
+            <serviceref guid="mapper" version="4.0"/>
+            <serviceref guid="mgraph" version="4.0"/>
+            <serviceref guid="XSLTFunctions" version="4.0"/>
+        </servicerefs>
+    </deployment>
+    <execution subtype="edbc">
+        <ccp min-version-supported="1.0" max-version-supported="1.0"/>
+        <launchtype supported="7"/>
+        <separate-process executable="com.fiorano.services.xslt.Xslt"/>
+        <inmemory executable="com.fiorano.services.xslt.Xslt"/>
+        <cps>
+            <launcher>com.fiorano.services.xslt.cps.XsltPropertySheet</launcher>
+        </cps>
+        <input-ports>
+            <port name="IN_PORT">
+                <description>Transforms input XML based on Mappings defined and generates an output XML.</description>
+            </port>
+        </input-ports>
+        <output-ports>
+            <port name="OUT_PORT">
+                <description>Transforms input XML based on Mappings defined and generates an output XML.</description>
+            </port>
+        </output-ports>
+        <logmodules>
+            <logmodule name="ERR_HANDLER" level="WARNING"/>
+            <logmodule name="OUT_HANDLER" level="INFO"/>
+            <logmodule name="com.fiorano.services.xslt.xslt" level="SEVERE"/>
+        </logmodules>
+        <runtime-arguments>
+            <runtime-argument name="JVM_PARAMS" mandatory="false">
+                <value>-DLOG_TO_STREAM=true</value>
+            </runtime-argument>
+        </runtime-arguments>
+    </execution>
+</service>

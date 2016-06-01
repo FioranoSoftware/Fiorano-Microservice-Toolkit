@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<service guid="chat" version="4.0">
+  <display categories="Collaboration" name="chat"/>
+  <icon large="chat32.png" small="chat.png"/>
+  <creation authors="Fiorano Software Technologies Pvt. Ltd."
+    date="04-01-2005 12:00:00" last-modified="15-03-2005 11:45:21"/>
+  <short-description>A Simple Chat Component</short-description>
+  <deployment label="PRODUCTION">
+    <resources>
+      <resource name="fesb-comp-chat.jar"/>
+	  <resource name="IN_PORT.xsd">
+	  <required configuration="true" execution="false"/>
+      </resource>
+	  <resource name="OUT_PORT.xsd">
+	  <required configuration="true" execution="false"/>
+      </resource>
+    </resources>
+    <servicerefs>
+      <serviceref guid="jms" version="4.0"/>
+      <serviceref guid="Studio" version="4.0"/>
+      <serviceref guid="BCCommon" version="4.0"/>
+      <serviceref guid="TifosiJavaRTL" version="4.0"/>
+      <serviceref guid="ServicesESB" version="4.0"/>
+      <serviceref guid="MicroServiceCommon" version="4.0"/>
+    </servicerefs>
+  </deployment>
+  <execution>
+    <launchtype supported="5"/>
+    <separate-process executable="com.fiorano.bc.chat.ChatService"/>
+    <inmemory executable="com.fiorano.bc.chat.ChatService"/>
+    <cps inmemory-launchable="false" mandatory="false">
+      <launcher>com.fiorano.bc.chat.editor.ChatModelEditor</launcher>
+    </cps>
+    <input-ports>
+      <port name="IN_PORT">
+        <description>Accepts data which is in the format specified in Chat service</description>
+        <schema root="ChatMessage">
+          <file>IN_PORT.xsd</file>
+        </schema>
+      </port>
+    </input-ports>
+    <output-ports>
+      <port name="OUT_PORT">
+        <description>Sends the chat message</description>
+        <schema root="ChatMessage">
+          <file>OUT_PORT.xsd</file>
+        </schema>
+      </port>
+    </output-ports>
+    <logmodules>
+      <logmodule name="com.fiorano.edbc.chat"/>
+      <logmodule name="com.fiorano.edbc.chat"/>
+      <logmodule name="ERR_HANDLER"/>
+      <logmodule level="INFO" name="OUT_HANDLER"/>
+    </logmodules>
+    <runtime-arguments>
+      <runtime-argument inmemory="false" mandatory="false" name="JVM_PARAMS">
+        <value>-DLOG_TO_STREAM=true</value>
+      </runtime-argument>
+    </runtime-arguments>
+  </execution>
+</service>

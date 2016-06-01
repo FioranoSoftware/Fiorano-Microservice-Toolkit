@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <parent>
+        <groupId>com.fiorano.microservices</groupId>
+        <artifactId>Adapters</artifactId>
+        <version>1.0</version>
+    </parent>
+
+    <version>1.0</version>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>CBR</artifactId>
+    <properties>
+        <skip.task>false</skip.task>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.fiorano.microservices</groupId>
+            <artifactId>EDBCEngine</artifactId>
+            <version>1.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fiorano.esb</groupId>
+            <artifactId>fbc-comp-customEditors</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${fiorano.home}/esb/server/repository/components/customEditors/4.0/fbc-comp-customEditors.jar</systemPath>
+        </dependency>
+
+        <dependency>
+            <groupId>framework</groupId>
+            <artifactId>fiorano-framework.jar</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${fiorano.home}/framework/lib/all/fiorano-framework.jar</systemPath>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fiorano.esb</groupId>
+            <artifactId>customEditors</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${fiorano.home}/esb/server/repository/components/customEditors/4.0/customEditors.jar
+            </systemPath>
+        </dependency>
+        <dependency>
+            <groupId>com.fiorano.esb</groupId>
+            <artifactId>fesb-comp-esbCustomEditors</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>
+                ${fiorano.home}/esb/server/repository/components/esbCustomEditors/4.0/fesb-comp-esbCustomEditors.jar
+            </systemPath>
+        </dependency>
+
+        <dependency>
+            <groupId>net.sf.saxon</groupId>
+            <artifactId>saxon</artifactId>
+            <version>8.4</version>
+            <scope>system</scope>
+            <systemPath>${fiorano.home}/extlib/saxon/saxon8.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>mgraph</groupId>
+            <artifactId>mgraph</artifactId>
+            <version>1.3.0_37</version>
+            <scope>system</scope>
+            <systemPath>${fiorano.home}/extlib/mgraph/mgraph.jar</systemPath>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>register.plugin</groupId>
+                <artifactId>register-maven-plugin</artifactId>
+                <version>1.0-SNAPSHOT</version>
+                <executions>
+                    <execution>
+                        <configuration>
+                            <host>localhost</host>
+                            <port>2099</port>
+                            <username>karaf</username>
+                            <password>karaf</password>
+                        </configuration>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>register</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

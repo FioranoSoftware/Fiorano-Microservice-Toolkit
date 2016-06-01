@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<service guid="Display" version="4.0">
+     <display categories="Util" name="Display"/>
+     <icon large="display32.png" small="display.png"/>
+     <creation authors="Fiorano Software Technologies Pvt. Ltd." date="27-12-2001 12:00:00" last-modified="25-02-2011 14:29:23"/>
+     <short-description>Component for Displaying documents</short-description>
+     <deployment label="PRODUCTION">
+          <resources>
+               <resource name="fesb-comp-display.jar"/>
+          </resources>
+          <servicerefs>
+               <serviceref guid="EDBCEngine" version="4.0"/>
+               <serviceref guid="jh" version="4.0"/>
+          </servicerefs>
+     </deployment>
+     <execution transaction="false">
+          <ccp max-version-supported="1.0" min-version-supported="1.0"/>
+          <launchtype supported="5"/>
+          <separate-process executable="com.fiorano.services.display.DisplayServiceLauncher"/>
+          <inmemory executable="com.fiorano.services.display.DisplayServiceLauncher"/>
+          <cps inmemory-launchable="false" mandatory="false">
+               <launcher>com.fiorano.services.display.cps.swing.DisplayPropertySheet</launcher>
+          </cps>
+          <input-ports>
+               <port name="IN_PORT">
+                    <description>Receives all incoming messages to display them in a user friendly format</description>
+               </port>
+          </input-ports>
+          <output-ports>
+               <port name="OUT_PORT">
+                    <description>Sends the document received at input port to the next business component in the workflow</description>
+               </port>
+          </output-ports>
+          <logmodules>
+               <logmodule level="WARNING" name="com.fiorano.services.display.DisplayService"/>
+               <logmodule level="WARNING" name="com.fiorano.services.display.transport.jms"/>
+               <logmodule level="WARNING" name="com.fiorano.services.display.engine"/>
+               <logmodule name="ERR_HANDLER"/>
+               <logmodule level="INFO" name="OUT_HANDLER"/>
+          </logmodules>
+          <runtime-arguments>
+               <runtime-argument inmemory="false" mandatory="false" name="JVM_PARAMS">
+                    <value>-DLOG_TO_STREAM=true</value>
+               </runtime-argument>
+          </runtime-arguments>
+     </execution>
+</service>

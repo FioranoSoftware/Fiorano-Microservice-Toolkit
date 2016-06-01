@@ -1,0 +1,276 @@
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.fiorano.microservices</groupId>
+    <artifactId>Adapters</artifactId>
+    <version>1.0</version>
+
+    <modules>
+        <module>register-maven-plugin</module>
+        <module>microservice-common</module>
+        <module>edbc-framework</module>
+        <module>bcgateway</module>
+        <module>xslt</module>
+        <module>cbr</module>
+        <module>cache</module>
+        <module>distribution-service</module>
+        <module>xml-verification</module>
+        <module>display</module>
+        <module>feeder</module>
+        <module>exception-listener</module>
+        <module>sender</module>
+        <module>receiver</module>
+        <module>chat</module>
+
+    </modules>
+    <packaging>pom</packaging>
+
+    <name>Adapters</name>
+    <url>http://maven.apache.org</url>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <fiorano.home>D:\dev\OpenSource\Installer</fiorano.home>
+        <maven.home>C:\Users\ADMIN\.m2\repository</maven.home>
+        <skip.task>true</skip.task>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>3.8.1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>estudio</groupId>
+            <artifactId>com.fiorano.tools.utilities_1.0.0</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${fiorano.home}/eStudio/plugins/com.fiorano.tools.utilities_1.0.0.jar</systemPath>
+        </dependency>
+
+        <dependency>
+            <groupId>cps</groupId>
+            <artifactId>estudio-cps</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${fiorano.home}/esb/server/repository/components/cps/4.0/estudio-cps.jar</systemPath>
+        </dependency>
+
+        <dependency>
+            <groupId>editors</groupId>
+            <artifactId>estudio-editors</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${fiorano.home}/esb/server/repository/components/editors/4.0/estudio-editors.jar</systemPath>
+        </dependency>
+
+        <dependency>
+            <groupId>estudio</groupId>
+            <artifactId>com.fiorano.tools.studio.soa.application.model_1.0.0</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${fiorano.home}/adapters/lib/tools/com.fiorano.tools.studio.soa.application.model_1.0.0.jar</systemPath>
+        </dependency>
+
+        <dependency>
+            <groupId>org.eclipse.swt</groupId>
+            <artifactId>org.eclipse.swt.win32.win32.x86</artifactId>
+            <version>4.3</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.eclipse</groupId>
+            <artifactId>jface</artifactId>
+            <version>3.3.0-I20070606-0010</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.eclipse.ui</groupId>
+            <artifactId>workbench</artifactId>
+            <version>3.3.0-I20070608-1100</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.eclipse.core</groupId>
+            <artifactId>resources</artifactId>
+            <version>3.3.0-v20070604</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.osgi</groupId>
+            <artifactId>org.osgi.core</artifactId>
+            <version>6.0.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.eclipse.emf</groupId>
+            <artifactId>org.eclipse.emf.ecore</artifactId>
+            <version>2.11.1-v20150805-0538</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.eclipse.emf</groupId>
+            <artifactId>org.eclipse.emf.common</artifactId>
+            <version>2.11.0-v20150805-0538</version>
+        </dependency>
+
+        <dependency>
+            <groupId>xjavadoc</groupId>
+            <artifactId>xjavadoc</artifactId>
+            <version>1.7</version>
+            <scope>system</scope>
+            <systemPath>${fiorano.home}/antscripts/lib/xjavadoc1.7.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>xdoclet</groupId>
+            <artifactId>xdoclet-module</artifactId>
+            <version>1.2.2-RC1</version>
+            <scope>system</scope>
+            <systemPath>${fiorano.home}/antscripts/lib/xdoclet-1.2.2-RC1.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>xdoclet</groupId>
+            <artifactId>xdoclet-xdoclet-module</artifactId>
+            <version>1.2.2-RC1</version>
+            <scope>system</scope>
+            <systemPath>${fiorano.home}/antscripts/lib/xdoclet-xdoclet-module-1.2.2-RC1.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>xdoclet</groupId>
+            <artifactId>xdoclet-jboss-module</artifactId>
+            <version>1.2.2-RC1</version>
+            <scope>system</scope>
+            <systemPath>${fiorano.home}/antscripts/lib/xdoclet-jboss-module-1.2.2-RC1.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>xdoclet</groupId>
+            <artifactId>xdoclet-jmx-module</artifactId>
+            <version>1.2.2-RC1</version>
+            <scope>system</scope>
+            <systemPath>${fiorano.home}/antscripts/lib/xdoclet-jmx-module-1.2.2-RC1.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>xdoclet</groupId>
+            <artifactId>xdoclet-ejb-module</artifactId>
+            <version>1.2.2-RC1</version>
+            <scope>system</scope>
+            <systemPath>${fiorano.home}/antscripts/lib/xdoclet-ejb-module-1.2.2-RC1.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>xdoclet</groupId>
+            <artifactId>xdoclet-web-module</artifactId>
+            <version>1.2.2-RC1</version>
+            <scope>system</scope>
+            <systemPath>${fiorano.home}/antscripts/lib/xdoclet-web-module-1.2.2-RC1.jar</systemPath>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <configuration>
+                    <descriptor>src/assembly/bin.xml</descriptor>
+                    <finalName>${artifactId}</finalName>
+                    <skipAssembly>${skip.task}</skipAssembly>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.10.3</version>
+                <configuration>
+                    <sourceFileExcludes>
+                        <exclude>**\/\Bundle.java</exclude>
+                    </sourceFileExcludes>
+                    <nohelp>true</nohelp>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>aggregate</id>
+                        <goals>
+                            <goal>aggregate</goal>
+                        </goals>
+                        <phase>site</phase>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>1.8</version>
+                <executions>
+                    <execution>
+                        <phase>generate-sources</phase>
+                        <configuration>
+                            <skip>${skip.task}</skip>
+                            <target>
+                                <taskdef name="xdoclet"
+                                         classname="xdoclet.DocletTask"
+                                         classpathref="maven.compile.classpath"/>
+                                <taskdef name="jmxdoclet"
+                                         classname="xdoclet.modules.jmx.JMXDocletTask"
+                                         classpathref="maven.compile.classpath"/>
+                                <taskdef name="jbossxmbean"
+                                         classname="xdoclet.modules.jboss.jmx.JBossXMBeanDescriptorSubTask"
+                                         classpathref="maven.compile.classpath"/>
+                                <!--
+                                  Place any Ant task here. You can add anything
+                                  you can add between <target> and </target> in a
+                                  build.xml.
+                                -->
+                                <echo>{ ${project.name} } generating resource bundle files ...</echo>
+                                <xdoclet destdir="${project.build.directory}/classes">
+                                    <fileset dir="src/main/java">
+                                        <include name="**/Bundle.java"/>
+                                        <include name="**/APIBundle.java"/>
+                                    </fileset>
+                                    <externalizer destinationFile="{0}.properties" tagName="msg.message" valueParamName="msg"/>
+                                </xdoclet>
+
+                                <echo>{ ${project.name} } Generating xdoclet ...</echo>
+                                <jmxdoclet destdir="${project.build.directory}/classes">
+                                    <fileset dir="src/main/java">
+                                        <include name="**/*.java"/>
+                                    </fileset>
+                                    <fileset dir="${basedir}/../edbc-framework/src/main/java">
+                                        <include name="com/fiorano/edbc/framework/service/configuration/AbstractConnectionConfiguration.java"/>
+                                        <include name="com/fiorano/edbc/framework/service/configuration/ConnectionlessServiceConfiguration.java"/>
+                                        <include name="com/fiorano/edbc/framework/service/configuration/ServiceConfiguration.java"/>
+                                    </fileset>
+                                    <jbossxmbean havingClassTag="fiorano:xmbean"/>
+                                </jmxdoclet>
+                                <delete dir="${project.build.directory}/classes/com/fiorano/edbc/"/>
+
+                            </target>
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+
+    </build>
+</project>

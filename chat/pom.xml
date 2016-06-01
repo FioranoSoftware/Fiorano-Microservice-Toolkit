@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <parent>
+        <groupId>com.fiorano.microservices</groupId>
+        <artifactId>Adapters</artifactId>
+        <version>1.0</version>
+    </parent>
+
+    <version>1.0</version>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>chat</artifactId>
+    <properties>
+        <skip.task>false</skip.task>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.fiorano.microservices</groupId>
+            <artifactId>EDBCEngine</artifactId>
+            <version>1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fiorano.esb</groupId>
+            <artifactId>activemq-all-5.11.1</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${fiorano.home}/esb/server/repository/components/jms/4.0/activemq-all-5.11.1.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>com.fiorano.esb</groupId>
+            <artifactId>application-repo</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${fiorano.home}/esb/server/repository/components/MicroServiceCommon/4.0/application-repo.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>com.fiorano.esb</groupId>
+            <artifactId>microservice</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${fiorano.home}/esb/server/repository/components/MicroServiceCommon/4.0/microservice.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>com.fiorano.esb</groupId>
+            <artifactId>MicroServiceCommon</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${fiorano.home}/esb/server/repository/components/MicroServiceCommon/4.0/MicroServiceCommon.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>com.fiorano.esb</groupId>
+            <artifactId>fiorano-framework</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${fiorano.home}/framework/lib/all/fiorano-framework.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>com.fiorano.esb</groupId>
+            <artifactId>adapters-esb-wrapper</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${fiorano.home}/adapters/lib/esb/adapters-esb-wrapper.jar</systemPath>
+        </dependency>
+
+
+        <dependency>
+            <groupId>com.fiorano.esb</groupId>
+            <artifactId>adapters-esb-util</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${fiorano.home}/adapters/lib/esb/adapters-esb-util.jar</systemPath>
+        </dependency>
+
+
+        <dependency>
+            <groupId>com.fiorano.esb</groupId>
+            <artifactId>esb-tools-tif-cps-util</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${fiorano.home}/esb/tools/lib/esb-tools-tif-cps-util.jar</systemPath>
+        </dependency>
+
+
+        <dependency>
+            <groupId>com.fiorano.esb</groupId>
+            <artifactId>utils</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${fiorano.home}/esb/server/repository/components/MicroServiceCommon/4.0/utils.jar</systemPath>
+        </dependency>
+
+
+        <dependency>
+            <groupId>com.fiorano.esb</groupId>
+            <artifactId>esb-shared</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${fiorano.home}/esb/shared/lib/all/esb-shared.jar</systemPath>
+        </dependency>
+
+
+        <dependency>
+            <groupId>javax.jms</groupId>
+            <artifactId>javax.jms-api</artifactId>
+            <version>2.0</version>
+            <scope>system</scope>
+            <systemPath>${fiorano.home}/extlib/jms/jms-2.0.jar</systemPath>
+        </dependency>
+
+
+        <dependency>
+            <groupId>com.fiorano.esb</groupId>
+            <artifactId>fesb-comp-chat</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${fiorano.home}/esb/server/repository/components/chat/4.0/fesb-comp-chat.jar</systemPath>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fiorano.esb</groupId>
+            <artifactId>com-fiorano-studio-esb-application</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${fiorano.home}/Studio/esb/modules/com-fiorano-studio-esb-application.jar</systemPath>
+        </dependency>
+
+
+        <dependency>
+            <groupId>com.fiorano.esb</groupId>
+            <artifactId>estudio-chat</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${fiorano.home}/esb/server/repository/components/chat/4.0/estudio-chat.jar</systemPath>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fiorano.esb</groupId>
+            <artifactId>com-fiorano-openide</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${fiorano.home}/Studio/common/modules/com-fiorano-openide.jar</systemPath>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fiorano.esb</groupId>
+            <artifactId>com-fiorano-studio-core</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${fiorano.home}/Studio/common/modules/com-fiorano-studio-core.jar</systemPath>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>register.plugin</groupId>
+                <artifactId>register-maven-plugin</artifactId>
+                <version>1.0-SNAPSHOT</version>
+                <executions>
+                    <execution>
+                        <configuration>
+                            <host>localhost</host>
+                            <port>2099</port>
+                            <username>karaf</username>
+                            <password>karaf</password>
+                        </configuration>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>register</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

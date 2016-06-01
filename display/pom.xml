@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>Adapters</artifactId>
+        <groupId>com.fiorano.microservices</groupId>
+        <version>1.0</version>
+    </parent>
+
+    <version>1.0</version>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>Display</artifactId>
+    <properties>
+        <skip.task>false</skip.task>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.fiorano.microservices</groupId>
+            <artifactId>EDBCEngine</artifactId>
+            <version>1.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>estudio</groupId>
+            <artifactId>com.fiorano.tools.common.ui_1.0.0</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${fiorano.home}/eStudio/plugins/com.fiorano.tools.common.ui_1.0.0.jar</systemPath>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>register.plugin</groupId>
+                <artifactId>register-maven-plugin</artifactId>
+                <version>1.0-SNAPSHOT</version>
+                <executions>
+                    <execution>
+                        <configuration>
+                            <host>localhost</host>
+                            <port>2099</port>
+                            <username>karaf</username>
+                            <password>karaf</password>
+                        </configuration>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>register</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

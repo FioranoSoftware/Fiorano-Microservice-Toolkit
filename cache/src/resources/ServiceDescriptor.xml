@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<service guid="Cache" version="4.0">
+    <display categories="Flow" name="Cache"/>
+    <icon large="cache32.png" small="cache.png"/>
+    <creation authors="Fiorano Software Technologies Pvt. Ltd." date="25-01-2007 12:00:00"
+              last-modified="25-02-2011 14:29:23"/>
+    <short-description>Cache component holds data in memory as a set of Name-Value pairs, identified by one or more
+        designated key Name Value pairs.
+    </short-description>
+    <long-description>Cache component provides a temporary storage during the runtime of application to store data
+        in-memory there by reducing the cost of operations like add, delete, update and lookup. The component does not
+        persist any data and persistance has to be done externally using components like FileWriter or DB.
+    </long-description>
+    <deployment label="PRODUCTION">
+        <resources>
+            <resource name="fesb-comp-Cache.jar"/>
+        </resources>
+        <servicerefs>
+            <serviceref guid="EDBCEngine" version="4.0"/>
+        </servicerefs>
+    </deployment>
+    <execution>
+        <ccp max-version-supported="1.0" min-version-supported="1.0"/>
+        <launchtype supported="7"/>
+        <separate-process executable="com.fiorano.services.cache.CacheServiceLauncher"/>
+        <inmemory executable="com.fiorano.services.cache.CacheServiceLauncher"/>
+        <cps inmemory-launchable="false">
+            <launcher>com.fiorano.services.cache.cps.swing.CachePropertySheet</launcher>
+        </cps>
+        <input-ports>
+            <port name="ADD_PORT">
+                <description>Add / lookup / update cache entries.</description>
+            </port>
+            <port name="DEL_PORT">
+                <description>Delete cache entries.</description>
+            </port>
+        </input-ports>
+        <output-ports>
+            <port name="OUT_PORT">
+                <description>Displays the cache entries fetched from cache.</description>
+            </port>
+        </output-ports>
+        <logmodules>
+            <logmodule level="WARNING" name="com.fiorano.services.cache.transport.jms"/>
+            <logmodule level="WARNING" name="com.fiorano.services.cache.engine"/>
+            <logmodule level="WARNING" name="com.fiorano.services.cache.CacheService"/>
+            <logmodule level="WARNING" name="com.fiorano.services.customencryption"/>
+            <logmodule level="WARNING" name="ERR_HANDLER"/>
+            <logmodule level="INFO" name="OUT_HANDLER"/>
+        </logmodules>
+        <runtime-arguments>
+            <runtime-argument mandatory="false" name="JVM_PARAMS">
+                <value>-DLOG_TO_STREAM=true</value>
+            </runtime-argument>
+        </runtime-arguments>
+    </execution>
+</service>

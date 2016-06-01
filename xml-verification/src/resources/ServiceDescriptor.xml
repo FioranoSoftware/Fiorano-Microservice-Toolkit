@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<service guid="XMLVerfication" version="4.0">
+    <display categories="Flow" name="XMLVerfication"/>
+    <icon large="xmlverification32.png" small="xmlverification.png"/>
+    <creation authors="Fiorano Software Technologies Pvt. Ltd."
+              date="10-08-2005 12:00:00" last-modified="10-08-2005 12:26:23"/>
+    <short-description>Verifies the incoming XML with the Specified XSD. The message is sent on the output port if
+        validation is successful. If the validation fails it is sent to the failed port with two message properties
+        ERROR_MESSAGE - this contains the reason
+        STACKTRACE - this contains the exception trace for failure.
+    </short-description>
+    <deployment label="PRODUCTION">
+        <resources>
+            <resource name="fesb-comp-xmlverification.jar"/>
+        </resources>
+        <servicerefs>
+            <serviceref guid="EDBCEngine" version="4.0"/>
+            <serviceref guid="esbCustomEditors" version="4.0"/>
+        </servicerefs>
+    </deployment>
+    <execution>
+        <ccp min-version-supported="1.0" max-version-supported="1.0"/>
+        <launchtype supported="7"/>
+        <separate-process executable="com.fiorano.services.xmlverification.XmlVerificationServiceLauncher"/>
+        <inmemory executable="com.fiorano.services.xmlverification.XmlVerificationServiceLauncher"/>
+        <cps inmemory-launchable="false">
+            <launcher>com.fiorano.services.xmlverification.cps.swing.XmlVerificationPropertySheet</launcher>
+        </cps>
+        <input-ports>
+            <port name="IN_PORT">
+                <description>Receives incoming XML messages</description>
+            </port>
+        </input-ports>
+        <output-ports>
+            <port name="OUT_PORT">
+                <description>Gets messages which are verified against a DTD</description>
+            </port>
+            <port name="FAILED_PORT">
+                <description>Gets the failed messages</description>
+            </port>
+        </output-ports>
+        <logmodules>
+            <logmodule name="com.fiorano.services.xmlverification.XmlVerificationService" level="WARNING"/>
+            <logmodule name="com.fiorano.services.xmlverification.transport.jms" level="WARNING"/>
+            <logmodule name="com.fiorano.services.xmlverification.engine" level="WARNING"/>
+            <logmodule name="ERR_HANDLER"/>
+            <logmodule level="INFO" name="OUT_HANDLER"/>
+        </logmodules>
+        <runtime-arguments>
+            <runtime-argument inmemory="false" mandatory="false" name="JVM_PARAMS">
+                <value>-DLOG_TO_STREAM=true</value>
+            </runtime-argument>
+        </runtime-arguments>
+    </execution>
+</service>

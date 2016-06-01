@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<service guid="BCGateway" version="4.0">
+    <display categories="System Lib" name="BCGateway"/>
+    <creation authors="Fiorano Software Technologies Pvt. Ltd." date="02-07-2002 12:00:00"
+              last-modified="25-02-2011 14:29:23"/>
+    <short-description>This BCGateway library.</short-description>
+    <long-description>This library service represents the gateway required to invoke any JCA compliant component.
+    </long-description>
+    <deployment label="PRODUCTION">
+        <resources>
+            <resource name="fesb-comp-bcgateway.jar"/>
+        </resources>
+        <servicerefs>
+            <serviceref guid="BCEngine" version="4.0"/>
+            <serviceref guid="Studio" version="4.0"/>
+            <serviceref guid="jms" version="4.0"/>
+            <serviceref guid="JakartaCommons" version="4.0"/>
+            <serviceref guid="directory-naming" version="4.0"/>
+            <serviceref guid="wsdl4j" version="4.0"/>
+            <serviceref guid="foxtrot" version="4.0"/>
+            <serviceref guid="jide" version="4.0"/>
+        </servicerefs>
+    </deployment>
+</service>
